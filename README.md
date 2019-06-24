@@ -1,9 +1,8 @@
 # Laravel Multi-User Auth
+A simple restaurant application with three type of users(Admin, User, Driver) all of them have different tables.
+Mainly focused on login and reset password
 
-## User Types
-
-In this application, We have three type of users Admin, User and Driver
-
+## Users
 - Admin (type: admin, super-admin)
 - User (type: buyer, seller)
 - Driver
