@@ -1,8 +1,8 @@
-# Laravel Multi User Auth
+# Laravel Multi-User Auth
 
 ## User Types
 
-In this application We have three types of users Admin, User and Driver
+In this application, We have three type of users Admin, User and Driver
 
 - Admin (type: admin, super-admin)
 - User (type: buyer, seller)
@@ -17,11 +17,7 @@ In this application We have three types of users Admin, User and Driver
 * Configure `.env`
 * Run `composer install`
 * Run `php artisan key:generate`
-* Run `php artisan migrate`
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within this application, please send an e-mail to Taylor Otwell via [jiffystacks@gmail.com](mailto:jiffystacks@gmail.com). All security vulnerabilities will be promptly addressed.
+* Run `php artisan migrate --seed`
 
 ## License
 
