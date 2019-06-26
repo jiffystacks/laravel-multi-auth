@@ -25,6 +25,7 @@ class DriverTableSeeder extends Seeder
                 'phone' => $faker->e164PhoneNumber(),
                 'password' => Hash::make('test@123'),
                 'email' => $email,
+                'role' => 5,
 	    		'vehicle_no' => $faker->unique()->randomDigitNotNull,
 	    		'created_at' => $faker->dateTime(),
 	    		'updated_at' => $faker->dateTime(),

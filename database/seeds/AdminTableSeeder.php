@@ -21,7 +21,7 @@ class AdminTableSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@demo.com',
             'password' => Hash::make('Admin@123'),
-            'is_super' => 1,
+            'role' => 1,
             'created_at' => $faker->dateTime(),
             'updated_at' => $faker->dateTime(),
         ]);

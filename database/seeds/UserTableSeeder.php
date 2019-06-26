@@ -26,7 +26,7 @@ class UserTableSeeder extends Seeder
                 'email' => $email,
                 'email_verified_at' => $faker->dateTime(),
 	    		'password' => Hash::make('test@123'),
-	    		'type' => 1,
+	    		'role' => 3,
 	    		'created_at' => $faker->dateTime(),
 	    		'updated_at' => $faker->dateTime(),
 	    	];
@@ -40,7 +40,7 @@ class UserTableSeeder extends Seeder
                 'email' => $email,
                 'email_verified_at' => $faker->dateTime(),
 	    		'password' => Hash::make('test@123'),
-	    		'type' => 2,
+	    		'role' => 4,
 	    		'created_at' => $faker->dateTime(),
 	    		'updated_at' => $faker->dateTime(),
 	    	];

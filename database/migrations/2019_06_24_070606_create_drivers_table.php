@@ -19,6 +19,7 @@ class CreateDriversTable extends Migration
             $table->string('phone');
             $table->string('password');
             $table->string('email')->nullable();
+            $table->integer('role')->default(5);
             $table->string('vehicle_no')->nullable();
             $table->timestamps();
         });

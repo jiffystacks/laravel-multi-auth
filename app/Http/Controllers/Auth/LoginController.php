@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -47,6 +48,27 @@ class LoginController extends Controller
         return view('auth.login', ['url' => 'admin']);
     }
 
+    public function login(Request $request){
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+
+            $user = Auth::user();
+            $this->setSession([
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'role' => $user->role,
+                'guard' => 'web'
+            ]);
+            return redirect()->intended('/home');
+        }
+        return back()->withInput($request->only('email', 'remember'));
+    }
+
     public function adminLogin(Request $request)
     {
         $this->validate($request, [
@@ -56,6 +78,14 @@ class LoginController extends Controller
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
+            $user = Auth::guard('admin')->user();
+            $this->setSession([
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'role' => $user->role,
+                'guard' => 'admin'
+            ]);
             return redirect()->intended('/admin');
         }
         return back()->withInput($request->only('email', 'remember'));
@@ -74,9 +104,26 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('driver')->attempt(['phone' => $request->phone, 'password' => $request->password], $request->get('remember'))) {
-
+            $user = Auth::guard('driver')->user();
+            $this->setSession([
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'role' => $user->role,
+                'guard' => 'driver'
+            ]);
             return redirect()->intended('/driver');
         }
         return back()->withInput($request->only('phone', 'remember'));
+    }
+
+    public function logout(){
+        request()->session()->flush();
+        Auth::logout();
+        return redirect('/home');
+    }
+
+    private function setSession($arr){
+        Session::put('user', $arr);
     }
 }
