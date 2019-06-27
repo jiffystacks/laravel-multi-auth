@@ -41,3 +41,26 @@ Route::post('/login/driver', 'Auth\LoginController@driverLogin');
 Route::view('/home', 'home')->middleware('auth');
 Route::view('/admin', 'admin');
 Route::view('/driver', 'driver');
+
+/*Route::group(['middleware' => ['permission:buyer.create|seller.create']], function () {
+	Route::get('/buyer-create', function () {
+		return view('user.buyer_create');
+	});
+
+	Route::get('/seller-create', function () {
+		return view('user.seller_create');
+	});
+});*/
+
+
+Route::group(['middleware' => ['role:buyer']], function () {
+	Route::get('/buyer-create', function () {
+		return view('user.buyer_create');
+	});
+});
+
+Route::group(['middleware' => ['role:seller,buyer']], function () {
+	Route::get('/seller-create', function () {
+		return view('user.seller_create');
+	});
+});

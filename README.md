@@ -1,11 +1,15 @@
 # Laravel Multi-User Auth
 A simple restaurant application with three type of users(Admin, User, Driver) all of them have different tables.
-Mainly focused on login and reset password
 
-## Users
-- Admin (type: admin, super-admin)
-- User (type: buyer, seller)
+## Users & Role
+- Admin (Role: admin, super-admin)
+- User (Role: buyer, seller)
 - Driver
+
+## Functionality
+- Multi Auth using different tables
+- Custom Laravel Blade
+- User's Role Permission
 
 ## Included
 * [Laravel 5.8](https://laravel.com/docs/5.8)
@@ -21,3 +25,7 @@ Mainly focused on login and reset password
 ## License
 
 The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Developer
+[Jiffystacks](http://www.jiffystacks.com)
